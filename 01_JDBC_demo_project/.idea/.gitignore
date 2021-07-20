@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../:\Users\Poli_ip\Dropbox\My PC (LAPTOP-F54G9BS7)\Documents\SoftUnuSpringData\Database Access with JDBC\01_JDBC_demo_project\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

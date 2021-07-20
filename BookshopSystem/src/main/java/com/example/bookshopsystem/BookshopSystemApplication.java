@@ -1,0 +1,12 @@
+package com.example.bookshopsystem;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BookshopSystemApplication {
+    //created by poli_ip
+    public static void main(String[] args) {
+        SpringApplication.run(BookshopSystemApplication.class, args);
+    }
+}
