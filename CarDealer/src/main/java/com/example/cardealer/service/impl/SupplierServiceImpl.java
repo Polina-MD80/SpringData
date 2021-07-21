@@ -61,7 +61,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List<LocalSuppliersDto> getLocalSuppliers() {
-        List<Supplier> suppliers = supplierRepository.findAllByIsImporterIsFalse();
+        List<Supplier> suppliers = supplierRepository.findAll().stream().filter(s->!s.getImporter()).collect(Collectors.toList());
         List<LocalSuppliersDto> localSuppliersDtos = suppliers.stream()
                 .map(supplier -> {
                     LocalSuppliersDto localSuppliersDto = modelMapper.map(supplier, LocalSuppliersDto.class);

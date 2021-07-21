@@ -31,7 +31,7 @@ public class Sale extends BaseEntity {
         this.car = car;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     public Customer getCustomer() {
         return customer;
     }

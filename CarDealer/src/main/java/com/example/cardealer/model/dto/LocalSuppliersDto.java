@@ -15,12 +15,9 @@ public class LocalSuppliersDto {
     private Integer partsCount;
 
 
-
-
     public LocalSuppliersDto() {
 
     }
-
 
 
     public String getId() {
@@ -44,7 +41,7 @@ public class LocalSuppliersDto {
     }
 
     public void setPartsCount(Integer partsCount) {
-        this.partsCount = getPartsCount();
+        this.partsCount =partsCount;
     }
 
 }

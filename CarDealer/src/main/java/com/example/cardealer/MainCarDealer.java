@@ -1,5 +1,6 @@
 package com.example.cardealer;
 
+import com.example.cardealer.model.dto.CarsAndParts;
 import com.example.cardealer.model.dto.CarsToyotaDto;
 import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
 import com.example.cardealer.model.dto.LocalSuppliersDto;
@@ -17,7 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_OUT;
-import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_READ;
+
 
 @Component
 public class MainCarDealer implements CommandLineRunner {
@@ -51,14 +52,28 @@ public class MainCarDealer implements CommandLineRunner {
                 case 1 -> orderedCustomers();
                 case 2 -> carsFromMakeToyota();
                 case 3 -> localSuppliers();
+                case 4 -> carsAndParts();
+                case 5 -> customerTotalSales();
 
             }
         }
 
     }
 
-    private void localSuppliers() {
+    private void customerTotalSales() {
+
+    }
+
+    private void carsAndParts() throws IOException {
+        List<CarsAndParts> carsAndPartsDtos = carService.getCarsAndParts();
+        String content = gson.toJson(carsAndPartsDtos);
+        writeToFile((FILE_PATH_OUT + "cars-and-parts.json"), content);
+    }
+
+    private void localSuppliers() throws IOException {
         List<LocalSuppliersDto> localSuppliersDtos = supplierService.getLocalSuppliers();
+        String content = gson.toJson(localSuppliersDtos);
+        writeToFile((FILE_PATH_OUT + "local-suppliers.json"), content);
     }
 
     private void carsFromMakeToyota() throws IOException {

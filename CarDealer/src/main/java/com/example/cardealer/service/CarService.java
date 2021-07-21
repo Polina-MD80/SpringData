@@ -1,5 +1,6 @@
 package com.example.cardealer.service;
 
+import com.example.cardealer.model.dto.CarsAndParts;
 import com.example.cardealer.model.dto.CarsToyotaDto;
 import com.example.cardealer.model.entity.Car;
 
@@ -13,4 +14,6 @@ public interface CarService {
     Car getRandomCar();
 
     List<CarsToyotaDto> getCarsFromMakeToyota(String make);
+
+    List<CarsAndParts> getCarsAndParts();
 }

@@ -3,6 +3,7 @@ package com.example.cardealer.service.impl;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Customer;
 import com.example.cardealer.model.entity.Sale;
+import com.example.cardealer.repository.CarRepository;
 import com.example.cardealer.repository.CustomerRepository;
 import com.example.cardealer.repository.SaleRepository;
 import com.example.cardealer.service.CarService;
@@ -20,12 +21,14 @@ public class SaleServiceImpl implements SaleService {
     private final CarService carService;
     private final CustomerRepository customerRepository;
     private final SaleRepository saleRepository;
+    private final CarRepository carRepository;
 
-    public SaleServiceImpl(CustomerService customerService, CarService carService, CustomerRepository customerRepository, SaleRepository saleRepository) {
+    public SaleServiceImpl(CustomerService customerService, CarService carService, CustomerRepository customerRepository, SaleRepository saleRepository, CarRepository carRepository) {
         this.customerService = customerService;
         this.carService = carService;
         this.customerRepository = customerRepository;
         this.saleRepository = saleRepository;
+        this.carRepository = carRepository;
     }
 
     @Override
@@ -33,18 +36,16 @@ public class SaleServiceImpl implements SaleService {
         if (saleRepository.count() > 0) {
             return;
         }
-        long count = customerRepository.count();
+        long count = carRepository.count()/4;
         for (long i = 1; i <= count; i++) {
-            Sale sale = new Sale();
-            Customer customer = customerRepository.getById(i);
-            Car car = carService.getRandomCar();
-            sale.setCustomer(customer);
-            try {
 
+            try {
+                Sale sale = new Sale();
+                Customer customer = customerService.getRandomCustomer();
+                Car car = carService.getRandomCar();
                 sale.setCar(car);
-            } catch (Throwable e) {
-                i--;
-            }
+                sale.setCustomer(customer);
+
             BigDecimal[] discounts = new BigDecimal[]{
                     BigDecimal.valueOf(0.0),
                     BigDecimal.valueOf(0.05),
@@ -61,6 +62,9 @@ public class SaleServiceImpl implements SaleService {
             sale.setDiscount(discount);
 
             saleRepository.save(sale);
+            } catch (Throwable e) {
+                i--;
+            }
         }
         addDiscountForYoungDriver();
 

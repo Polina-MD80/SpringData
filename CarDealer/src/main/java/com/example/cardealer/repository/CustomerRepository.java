@@ -10,4 +10,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Override
     List<Customer> findAll();
+
+    List<Customer> findAllBySalesIsNotNull();
+
+
 }

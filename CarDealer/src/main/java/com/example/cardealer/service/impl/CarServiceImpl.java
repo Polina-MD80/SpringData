@@ -1,7 +1,6 @@
 package com.example.cardealer.service.impl;
 
-import com.example.cardealer.model.dto.CarSeedDto;
-import com.example.cardealer.model.dto.CarsToyotaDto;
+import com.example.cardealer.model.dto.*;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Part;
 import com.example.cardealer.repository.CarRepository;
@@ -74,10 +73,22 @@ public class CarServiceImpl implements CarService {
     public List<CarsToyotaDto> getCarsFromMakeToyota(String make) {
         List<Car> cars = this.carRepository.findCarByMakeOrderByModel(make);
         List<CarsToyotaDto> carsToyotaDtos = cars.stream()
-                .sorted((f,s)-> Long.compare(s.getTravelledDistance(),f.getTravelledDistance()))
+                .sorted((f, s) -> Long.compare(s.getTravelledDistance(), f.getTravelledDistance()))
                 .map(car -> modelMapper.map(car, CarsToyotaDto.class))
                 .collect(Collectors.toList());
         return carsToyotaDtos;
+    }
+
+    @Override
+    public List<CarsAndParts> getCarsAndParts() {
+        List<Car> cars = carRepository.findAll();
+        List<CarsAndParts> carsAndParts = cars.stream()
+                .map(car -> modelMapper.map(car, CarsAndParts.class))
+                .collect(Collectors.toList());
+
+        return carsAndParts;
+
+
     }
 
 
