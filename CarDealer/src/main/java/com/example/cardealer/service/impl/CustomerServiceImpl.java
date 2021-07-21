@@ -1,6 +1,5 @@
 package com.example.cardealer.service.impl;
 
-import com.example.cardealer.constants.GlobalApplicationConstants;
 import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
 import com.example.cardealer.model.dto.CustomerSeedDto;
 import com.example.cardealer.model.entity.Customer;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH;
+import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_READ;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -45,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
             return;
         }
 
-        String data = Files.readString(Path.of(FILE_PATH + "customers.json"));
+        String data = Files.readString(Path.of(FILE_PATH_READ + "customers.json"));
 
         CustomerSeedDto[] customerSeedDtos = gson.fromJson(data, CustomerSeedDto[].class);
 

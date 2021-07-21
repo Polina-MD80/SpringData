@@ -1,8 +1,8 @@
 package com.example.cardealer;
 
-import com.example.cardealer.constants.GlobalApplicationConstants;
+import com.example.cardealer.model.dto.CarsToyotaDto;
 import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
-import com.example.cardealer.model.entity.Sale;
+import com.example.cardealer.model.dto.LocalSuppliersDto;
 import com.example.cardealer.service.*;
 import com.google.gson.Gson;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +16,8 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 
-import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH;
+import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_OUT;
+import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_READ;
 
 @Component
 public class MainCarDealer implements CommandLineRunner {
@@ -48,17 +49,29 @@ public class MainCarDealer implements CommandLineRunner {
             int taskNumber = Integer.parseInt(reader.readLine());
             switch (taskNumber) {
                 case 1 -> orderedCustomers();
+                case 2 -> carsFromMakeToyota();
+                case 3 -> localSuppliers();
 
             }
         }
 
     }
 
+    private void localSuppliers() {
+        List<LocalSuppliersDto> localSuppliersDtos = supplierService.getLocalSuppliers();
+    }
+
+    private void carsFromMakeToyota() throws IOException {
+        List<CarsToyotaDto> carsToyotaDtos = carService.getCarsFromMakeToyota("Toyota");
+        String content = gson.toJson(carsToyotaDtos);
+        writeToFile((FILE_PATH_OUT + "toyota-cars.json"), content);
+    }
+
 
     private void orderedCustomers() throws IOException {
         List<CustomerOrderedCapitalDto> customerOrderedCapitalDtos = this.customerService.getOrderedCustomers();
         String content = gson.toJson(customerOrderedCapitalDtos);
-        writeToFile(FILE_PATH + "ordered-customers.json", content);
+        writeToFile(FILE_PATH_OUT + "ordered-customers.json", content);
     }
 
     private void writeToFile(String path, String content) throws IOException {

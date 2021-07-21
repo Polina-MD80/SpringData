@@ -1,6 +1,7 @@
 package com.example.cardealer.service.impl;
 
 import com.example.cardealer.model.dto.CarSeedDto;
+import com.example.cardealer.model.dto.CarsToyotaDto;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Part;
 import com.example.cardealer.repository.CarRepository;
@@ -18,8 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
-import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH;
+import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_READ;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -42,10 +44,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void seedData() throws IOException {
-        if (carRepository.count()>0){
+        if (carRepository.count() > 0) {
             return;
         }
-        String data = Files.readString(Path.of(FILE_PATH + "cars.json"));
+        String data = Files.readString(Path.of(FILE_PATH_READ + "cars.json"));
 
         CarSeedDto[] carSeedDtos = gson.fromJson(data, CarSeedDto[].class);
 
@@ -53,9 +55,9 @@ public class CarServiceImpl implements CarService {
                 .filter(validationUtil::isValid)
                 .map(carSeedDto -> {
                     Car car = modelMapper.map(carSeedDto, Car.class);
-                   List<Part> partList =  getListOfRandomParts();
-                   car.setParts(partList);
-                   return car;
+                    List<Part> partList = getListOfRandomParts();
+                    car.setParts(partList);
+                    return car;
 
                 })
                 .forEach(carRepository::save);
@@ -67,6 +69,17 @@ public class CarServiceImpl implements CarService {
         Long randomId = ThreadLocalRandom.current().nextLong(1, count + 1);
         return this.carRepository.getById(randomId);
     }
+
+    @Override
+    public List<CarsToyotaDto> getCarsFromMakeToyota(String make) {
+        List<Car> cars = this.carRepository.findCarByMakeOrderByModel(make);
+        List<CarsToyotaDto> carsToyotaDtos = cars.stream()
+                .sorted((f,s)-> Long.compare(s.getTravelledDistance(),f.getTravelledDistance()))
+                .map(car -> modelMapper.map(car, CarsToyotaDto.class))
+                .collect(Collectors.toList());
+        return carsToyotaDtos;
+    }
+
 
     private List<Part> getListOfRandomParts() {
         List<Part> parts = new ArrayList<>();

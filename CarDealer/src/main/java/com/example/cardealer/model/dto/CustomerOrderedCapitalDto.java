@@ -1,8 +1,7 @@
 package com.example.cardealer.model.dto;
 
 import com.example.cardealer.model.entity.Sale;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import com.google.gson.annotations.Expose;
 
 

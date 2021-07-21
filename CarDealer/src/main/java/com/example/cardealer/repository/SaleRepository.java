@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-public interface SaleRepository extends JpaRepository<Sale, Long> {
+@Repository
+public interface SaleRepository extends JpaRepository<Sale, Long>{
 
 
 }

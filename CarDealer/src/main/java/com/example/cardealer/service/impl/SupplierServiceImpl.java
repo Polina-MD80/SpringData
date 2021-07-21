@@ -1,6 +1,7 @@
 package com.example.cardealer.service.impl;
 
 import com.example.cardealer.constants.GlobalApplicationConstants;
+import com.example.cardealer.model.dto.LocalSuppliersDto;
 import com.example.cardealer.model.dto.SupplierSeedDto;
 import com.example.cardealer.model.entity.Supplier;
 import com.example.cardealer.repository.SupplierRepository;
@@ -38,7 +39,7 @@ public class SupplierServiceImpl implements SupplierService {
             return;
         }
 
-        String data = Files.readString(Path.of(GlobalApplicationConstants.FILE_PATH + "suppliers.json"));
+        String data = Files.readString(Path.of(GlobalApplicationConstants.FILE_PATH_READ + "suppliers.json"));
 
         SupplierSeedDto[] supplierSeedDtos = gson.fromJson(data, SupplierSeedDto[].class);
         Arrays.stream(supplierSeedDtos)
@@ -56,5 +57,19 @@ public class SupplierServiceImpl implements SupplierService {
         long randomId = ThreadLocalRandom.current().nextLong(1, count + 1);
 
         return this.supplierRepository.getById(randomId);
+    }
+
+    @Override
+    public List<LocalSuppliersDto> getLocalSuppliers() {
+        List<Supplier> suppliers = supplierRepository.findAllByIsImporterIsFalse();
+        List<LocalSuppliersDto> localSuppliersDtos = suppliers.stream()
+                .map(supplier -> {
+                    LocalSuppliersDto localSuppliersDto = modelMapper.map(supplier, LocalSuppliersDto.class);
+                    localSuppliersDto.setPartsCount(supplier.getParts().size());
+                    return localSuppliersDto;
+                })
+                .collect(Collectors.toList());
+
+        return localSuppliersDtos;
     }
 }

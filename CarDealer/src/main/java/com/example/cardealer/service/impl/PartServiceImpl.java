@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH;
+import static com.example.cardealer.constants.GlobalApplicationConstants.FILE_PATH_READ;
 
 @Service
 public class PartServiceImpl implements PartService {
@@ -40,7 +40,7 @@ public class PartServiceImpl implements PartService {
             return;
         }
 
-        String data = Files.readString(Path.of(FILE_PATH + "parts.json"));
+        String data = Files.readString(Path.of(FILE_PATH_READ + "parts.json"));
         PartsSeedDto[] partsSeedDtos = gson.fromJson(data, PartsSeedDto[].class);
         Arrays.stream(partsSeedDtos)
                 .filter(validationUtil::isValid)
