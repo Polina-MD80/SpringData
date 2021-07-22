@@ -18,9 +18,17 @@ public class CustomerOrderedCapitalDto {
     @Expose
     private Boolean IsYoungDriver;
     @Expose
-    private List<Sale> Sales;
+    private List<SalesCarMakeModelDto> Sales;
 
     public CustomerOrderedCapitalDto() {
+    }
+
+    public List<SalesCarMakeModelDto> getSales() {
+        return Sales;
+    }
+
+    public void setSales(List<SalesCarMakeModelDto> sales) {
+        Sales = sales;
     }
 
     public Long getId() {
@@ -55,11 +63,5 @@ public class CustomerOrderedCapitalDto {
         IsYoungDriver = youngDriver;
     }
 
-    public List<Sale> getSales() {
-        return Sales;
-    }
 
-    public void setSales(List<Sale> sales) {
-        Sales = sales;
-    }
 }

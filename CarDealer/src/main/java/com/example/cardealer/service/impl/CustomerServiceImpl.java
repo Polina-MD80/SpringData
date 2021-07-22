@@ -1,9 +1,6 @@
 package com.example.cardealer.service.impl;
 
-import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
-import com.example.cardealer.model.dto.CustomerSeedDto;
-import com.example.cardealer.model.dto.CustomerTotalSalesDto;
-import com.example.cardealer.model.dto.SalePriceDto;
+import com.example.cardealer.model.dto.*;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Customer;
 import com.example.cardealer.model.entity.Part;
@@ -85,7 +82,15 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> orderedCustomers = customers.stream().sorted(Comparator.comparing(Customer::getBirthDate).thenComparing(Customer::getYoungDriver)).collect(Collectors.toList());
         List<CustomerOrderedCapitalDto> customerOrderedCapitalDtos = orderedCustomers.stream()
                 .map(customer -> {
-                    return modelMapper.map(customer, CustomerOrderedCapitalDto.class);
+                    CustomerOrderedCapitalDto customerOrderedCapitalDto = modelMapper.map(customer, CustomerOrderedCapitalDto.class);
+                    List<SalesCarMakeModelDto> salesCarMakeModelDtos = customer.getSales().stream()
+                            .map(sale -> {
+                                SalesCarMakeModelDto salesCarMakeModelDto = modelMapper.map(sale, SalesCarMakeModelDto.class);
+                                salesCarMakeModelDto.setCar(sale.getCar().getMake() + " " + sale.getCar().getModel());
+                                return salesCarMakeModelDto;
+                            }).collect(Collectors.toList());
+                    customerOrderedCapitalDto.setSales(salesCarMakeModelDtos);
+                    return customerOrderedCapitalDto;
                 })
                 .collect(Collectors.toList());
         return customerOrderedCapitalDtos;
