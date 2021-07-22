@@ -2,8 +2,15 @@ package com.example.cardealer.service.impl;
 
 import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
 import com.example.cardealer.model.dto.CustomerSeedDto;
+import com.example.cardealer.model.dto.CustomerTotalSalesDto;
+import com.example.cardealer.model.dto.SalePriceDto;
+import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Customer;
+import com.example.cardealer.model.entity.Part;
+import com.example.cardealer.model.entity.Sale;
+import com.example.cardealer.repository.CarRepository;
 import com.example.cardealer.repository.CustomerRepository;
+import com.example.cardealer.repository.SaleRepository;
 import com.example.cardealer.service.CustomerService;
 import com.example.cardealer.util.ValidationUtil;
 import com.google.gson.Gson;
@@ -11,6 +18,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -29,13 +37,17 @@ public class CustomerServiceImpl implements CustomerService {
     private final ValidationUtil validationUtil;
     private final ModelMapper modelMapper;
     private final CustomerRepository customerRepository;
+    private final CarRepository carRepository;
+    private final SaleRepository saleRepository;
 
     public CustomerServiceImpl(Gson gson, ValidationUtil validationUtil,
-                               ModelMapper modelMapper, CustomerRepository customerRepository) {
+                               ModelMapper modelMapper, CustomerRepository customerRepository, CarRepository carRepository, SaleRepository saleRepository) {
         this.gson = gson;
         this.validationUtil = validationUtil;
         this.modelMapper = modelMapper;
         this.customerRepository = customerRepository;
+        this.carRepository = carRepository;
+        this.saleRepository = saleRepository;
     }
 
     @Override
@@ -73,9 +85,47 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> orderedCustomers = customers.stream().sorted(Comparator.comparing(Customer::getBirthDate).thenComparing(Customer::getYoungDriver)).collect(Collectors.toList());
         List<CustomerOrderedCapitalDto> customerOrderedCapitalDtos = orderedCustomers.stream()
                 .map(customer -> {
-                   return modelMapper.map(customer, CustomerOrderedCapitalDto.class);
+                    return modelMapper.map(customer, CustomerOrderedCapitalDto.class);
                 })
                 .collect(Collectors.toList());
         return customerOrderedCapitalDtos;
+    }
+
+    @Override
+    public List<CustomerTotalSalesDto> getCustomersWithTheirSales() {
+        List<Car> cars = carRepository.findAllSoldCars();
+
+        List<Customer> customers = customerRepository.findAllBySalesIsNotNull();
+        List<CustomerTotalSalesDto> customerTotalSalesDtos = customers.stream()
+                .map(customer -> {
+                    CustomerTotalSalesDto customerTotalSalesDto = modelMapper.map(customer, CustomerTotalSalesDto.class);
+                    customerTotalSalesDto.setFullName(customer.getName());
+                    customerTotalSalesDto.setBoughtCars(customer.getSales().size());
+                    List<Car> carsPerCustomer = customer.getSales().stream().map(Sale::getCar).collect(Collectors.toList());
+                    customerTotalSalesDto.setCars(carsPerCustomer);
+                    List<Sale> sales = customer.getSales();
+                    List<SalePriceDto> salePriceDtos = sales.stream()
+                            .map(sale -> {
+                                SalePriceDto salePriceDto = modelMapper.map(sale, SalePriceDto.class);
+                                salePriceDto.setCar(sale.getCar());
+                                salePriceDto.setParts(sale.getCar().getParts());
+                                salePriceDto.setPriceWithoutDiscount(salePriceDto.getParts()
+                                        .stream().map(Part::getPrice)
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add));
+                                salePriceDto.setPrice(salePriceDto.getPriceWithoutDiscount().multiply(sale.getDiscount()));
+                                return salePriceDto;
+                            }).collect(Collectors.toList());
+                    customerTotalSalesDto.setSales(salePriceDtos);
+
+                    customerTotalSalesDto.setPrice(salePriceDtos.stream()
+                    .map(SalePriceDto::getPrice)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add));
+
+                    return customerTotalSalesDto;
+                }).collect(Collectors.toList());
+        return customerTotalSalesDtos.stream()
+                .sorted((f, s) -> s.getBoughtCars().compareTo(f.getBoughtCars()))
+                .sorted((f, s) -> s.getPrice().compareTo(f.getPrice()))
+                .collect(Collectors.toList());
     }
 }

@@ -1,9 +1,6 @@
 package com.example.cardealer;
 
-import com.example.cardealer.model.dto.CarsAndParts;
-import com.example.cardealer.model.dto.CarsToyotaDto;
-import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
-import com.example.cardealer.model.dto.LocalSuppliersDto;
+import com.example.cardealer.model.dto.*;
 import com.example.cardealer.service.*;
 import com.google.gson.Gson;
 import org.springframework.boot.CommandLineRunner;
@@ -60,8 +57,10 @@ public class MainCarDealer implements CommandLineRunner {
 
     }
 
-    private void customerTotalSales() {
-
+    private void customerTotalSales() throws IOException {
+        List<CustomerTotalSalesDto> customerTotalSalesDtos = customerService.getCustomersWithTheirSales();
+        String content = gson.toJson(customerTotalSalesDtos);
+        writeToFile((FILE_PATH_OUT + "customers-total-sales.json"), content);
     }
 
     private void carsAndParts() throws IOException {

@@ -1,6 +1,7 @@
 package com.example.cardealer.service;
 
 import com.example.cardealer.model.dto.CustomerOrderedCapitalDto;
+import com.example.cardealer.model.dto.CustomerTotalSalesDto;
 import com.example.cardealer.model.entity.Customer;
 
 import java.io.IOException;
@@ -12,4 +13,6 @@ public interface CustomerService {
     Customer getRandomCustomer();
 
     List<CustomerOrderedCapitalDto> getOrderedCustomers();
+
+    List<CustomerTotalSalesDto> getCustomersWithTheirSales();
 }
