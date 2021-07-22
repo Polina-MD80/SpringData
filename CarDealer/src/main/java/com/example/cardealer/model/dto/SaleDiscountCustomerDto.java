@@ -1,31 +1,47 @@
 package com.example.cardealer.model.dto;
 
 import com.example.cardealer.model.entity.Car;
-import com.example.cardealer.model.entity.Part;
 import com.google.gson.annotations.Expose;
 
 import java.math.BigDecimal;
-import java.util.List;
 
-public class SalePriceDto {
-
-    private Car car;
-
+public class SaleDiscountCustomerDto {
+    @Expose
+    private CarWithPriceAndDistDto car;
+    @Expose
+    private String customerName;
+    @Expose
+    private BigDecimal Discount;
     @Expose
     private BigDecimal price;
     @Expose
     private BigDecimal priceWithDiscount;
-    private List<Part> parts;
 
-    public SalePriceDto() {
+    public SaleDiscountCustomerDto() {
     }
 
-    public Car getCar() {
+    public CarWithPriceAndDistDto getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(CarWithPriceAndDistDto car) {
         this.car = car;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public BigDecimal getDiscount() {
+        return Discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        Discount = discount;
     }
 
     public BigDecimal getPrice() {
@@ -36,20 +52,11 @@ public class SalePriceDto {
         this.price = price;
     }
 
-
     public BigDecimal getPriceWithDiscount() {
         return priceWithDiscount;
     }
 
     public void setPriceWithDiscount(BigDecimal priceWithDiscount) {
         this.priceWithDiscount = priceWithDiscount;
-    }
-
-    public List<Part> getParts() {
-        return parts;
-    }
-
-    public void setParts(List<Part> parts) {
-        this.parts = parts;
     }
 }

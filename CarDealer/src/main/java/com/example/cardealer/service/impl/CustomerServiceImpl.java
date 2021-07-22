@@ -104,17 +104,7 @@ public class CustomerServiceImpl implements CustomerService {
                     List<Car> carsPerCustomer = customer.getSales().stream().map(Sale::getCar).collect(Collectors.toList());
                     customerTotalSalesDto.setCars(carsPerCustomer);
                     List<Sale> sales = customer.getSales();
-                    List<SalePriceDto> salePriceDtos = sales.stream()
-                            .map(sale -> {
-                                SalePriceDto salePriceDto = modelMapper.map(sale, SalePriceDto.class);
-                                salePriceDto.setCar(sale.getCar());
-                                salePriceDto.setParts(sale.getCar().getParts());
-                                salePriceDto.setPriceWithoutDiscount(salePriceDto.getParts()
-                                        .stream().map(Part::getPrice)
-                                        .reduce(BigDecimal.ZERO, BigDecimal::add));
-                                salePriceDto.setPrice(salePriceDto.getPriceWithoutDiscount().multiply(sale.getDiscount()));
-                                return salePriceDto;
-                            }).collect(Collectors.toList());
+                    List<SalePriceDto> salePriceDtos = getSalePriceDtos(sales);
                     customerTotalSalesDto.setSales(salePriceDtos);
 
                     customerTotalSalesDto.setPrice(salePriceDtos.stream()
@@ -127,5 +117,20 @@ public class CustomerServiceImpl implements CustomerService {
                 .sorted((f, s) -> s.getBoughtCars().compareTo(f.getBoughtCars()))
                 .sorted((f, s) -> s.getPrice().compareTo(f.getPrice()))
                 .collect(Collectors.toList());
+    }
+
+    private List<SalePriceDto> getSalePriceDtos(List<Sale> sales) {
+        List<SalePriceDto> salePriceDtos = sales.stream()
+                .map(sale -> {
+                    SalePriceDto salePriceDto = modelMapper.map(sale, SalePriceDto.class);
+                    salePriceDto.setCar(sale.getCar());
+                    salePriceDto.setParts(sale.getCar().getParts());
+                    salePriceDto.setPrice(salePriceDto.getParts()
+                            .stream().map(Part::getPrice)
+                            .reduce(BigDecimal.ZERO, BigDecimal::add));
+                    salePriceDto.setPriceWithDiscount(salePriceDto.getPrice().multiply(BigDecimal.valueOf(1).subtract(sale.getDiscount())));
+                    return salePriceDto;
+                }).collect(Collectors.toList());
+        return salePriceDtos;
     }
 }

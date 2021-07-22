@@ -43,7 +43,7 @@ public class MainCarDealer implements CommandLineRunner {
         seedData();
 
         while (true) {
-            System.out.println("Enter task number:");
+            System.out.println("Enter task number from 1 to 6:");
             int taskNumber = Integer.parseInt(reader.readLine());
             switch (taskNumber) {
                 case 1 -> orderedCustomers();
@@ -51,10 +51,18 @@ public class MainCarDealer implements CommandLineRunner {
                 case 3 -> localSuppliers();
                 case 4 -> carsAndParts();
                 case 5 -> customerTotalSales();
+                case 6 -> salesWithAppliedDiscount();
+                default -> System.err.println("Invalid task number!");
 
             }
         }
 
+    }
+
+    private void salesWithAppliedDiscount() throws IOException {
+     List<SaleDiscountCustomerDto> saleDiscountCustomerDtos = saleService.getAllSalesWithDiscount();
+        String content = gson.toJson(saleDiscountCustomerDtos);
+        writeToFile((FILE_PATH_OUT + "sales-discounts.json"), content);
     }
 
     private void customerTotalSales() throws IOException {
