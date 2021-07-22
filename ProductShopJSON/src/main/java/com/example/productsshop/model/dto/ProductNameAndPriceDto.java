@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import java.math.BigDecimal;
 
 public class ProductNameAndPriceDto {
-    @Email
+    @Expose
     private String name;
     @Expose
     private BigDecimal price;
