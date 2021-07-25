@@ -1,6 +1,6 @@
 package com.example.productshopxml.service.impl;
 
-import com.example.productshopxml.model.dto.CategorySeedDto;
+import com.example.productshopxml.model.dto.seedDtos.CategorySeedDto;
 import com.example.productshopxml.model.entity.Category;
 import com.example.productshopxml.repository.CategoryRepository;
 import com.example.productshopxml.service.CategoryService;

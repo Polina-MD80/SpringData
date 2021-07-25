@@ -1,4 +1,6 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.usersSoldProducts;
+
+import com.example.productshopxml.model.dto.usersSoldProducts.SoldProductsRootDto;
 
 import javax.xml.bind.annotation.*;
 

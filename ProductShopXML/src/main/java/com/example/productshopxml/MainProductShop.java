@@ -1,6 +1,12 @@
 package com.example.productshopxml;
 
-import com.example.productshopxml.model.dto.*;
+import com.example.productshopxml.model.dto.productsInRangeDtos.ProductInRangeRootDto;
+import com.example.productshopxml.model.dto.seedDtos.CategoryRootSeedDto;
+import com.example.productshopxml.model.dto.seedDtos.ProductRootSeedDto;
+import com.example.productshopxml.model.dto.seedDtos.UserSeedRootDto;
+import com.example.productshopxml.model.dto.usersAndProducts.UserProductRootDto;
+import com.example.productshopxml.model.dto.usersAndProducts.UserProductsDto;
+import com.example.productshopxml.model.dto.usersSoldProducts.UserSoldProductsRootDto;
 import com.example.productshopxml.repository.UserRepository;
 import com.example.productshopxml.service.CategoryService;
 import com.example.productshopxml.service.ProductService;
@@ -41,29 +47,33 @@ public class MainProductShop implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         seedData();
-        while (true){
+        while (true) {
             System.out.println("Enter task number from 1 - 3:");
             int taskNumber = Integer.parseInt(bufferedReader.readLine());
 
-            switch (taskNumber){
+            switch (taskNumber) {
                 case 1 -> productsInRange();
                 case 2 -> usersSoldProducts();
+                case 3 -> userAndProducts();
+                default -> System.out.println("Invalid task number !!!");
             }
         }
 
 
+    }
 
-
-
+    private void userAndProducts() throws JAXBException {
+        UserProductRootDto userProductRootDto = userService.getUserProducts();
+        xmlParser.toFile(OUT_DIR_PATH + "users-products.xml", userProductRootDto);
     }
 
     private void usersSoldProducts() throws JAXBException {
-       UserSoldProductsRootDto userSoldProductsRootDto = userService.getUsersSoldProducts();
-               xmlParser.toFile(OUT_DIR_PATH + "users-sold-products.xml" , userSoldProductsRootDto);
+        UserSoldProductsRootDto userSoldProductsRootDto = userService.getUsersSoldProducts();
+        xmlParser.toFile(OUT_DIR_PATH + "users-sold-products.xml", userSoldProductsRootDto);
     }
 
     private void productsInRange() throws JAXBException {
-        ProductInRangeRootDto productInRangeRootDto = productService.getProductsInRange(BigDecimal.valueOf(500),BigDecimal.valueOf(1000));
+        ProductInRangeRootDto productInRangeRootDto = productService.getProductsInRange(BigDecimal.valueOf(500), BigDecimal.valueOf(1000));
         xmlParser.toFile(OUT_DIR_PATH + "products-in-range.xml", productInRangeRootDto);
     }
 
@@ -77,12 +87,10 @@ public class MainProductShop implements CommandLineRunner {
         UserSeedRootDto userSeedRootDto = xmlParser.fromFile(FILES_PATH_RESOURCE + USERS_FILE_NAME,
                 UserSeedRootDto.class);
         userService.seedUsers(userSeedRootDto.getUserSeedDtos());
- // Seed products
+        // Seed products
         ProductRootSeedDto productRootSeedDto = xmlParser.fromFile(FILES_PATH_RESOURCE + PRODUCTS_FILE_NAME,
                 ProductRootSeedDto.class);
         productService.seedProducts(productRootSeedDto.getProductSeedDtos());
-
-
 
 
     }

@@ -1,5 +1,7 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.seedDtos;
 
+
+import com.example.productshopxml.model.dto.seedDtos.CategorySeedDto;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

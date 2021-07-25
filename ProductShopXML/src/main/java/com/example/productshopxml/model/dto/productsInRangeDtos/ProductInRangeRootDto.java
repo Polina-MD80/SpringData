@@ -1,4 +1,4 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.productsInRangeDtos;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

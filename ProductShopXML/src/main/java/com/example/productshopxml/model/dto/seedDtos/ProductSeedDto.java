@@ -1,4 +1,4 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.seedDtos;
 
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;

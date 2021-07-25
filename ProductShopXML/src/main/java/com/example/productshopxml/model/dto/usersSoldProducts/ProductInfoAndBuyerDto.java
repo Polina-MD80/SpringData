@@ -1,4 +1,4 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.usersSoldProducts;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;

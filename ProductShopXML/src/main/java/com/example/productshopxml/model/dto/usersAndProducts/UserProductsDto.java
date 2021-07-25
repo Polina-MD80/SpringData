@@ -1,19 +1,20 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.usersAndProducts;
 
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserSeedDto {
+public class UserProductsDto {
     @XmlAttribute(name = "first-name")
     private String firstName;
     @XmlAttribute(name = "last-name")
     private String lastName;
-    @XmlAttribute(name = "age")
+    @XmlAttribute
     private Integer age;
+    @XmlElement(name = "sold-products")
+    private SoldProductsPerUserRootDto soldProducts;
 
-    public UserSeedDto() {
+    public UserProductsDto() {
     }
 
     public String getFirstName() {
@@ -24,7 +25,6 @@ public class UserSeedDto {
         this.firstName = firstName;
     }
 
-    @Size(min = 3)
     public String getLastName() {
         return lastName;
     }
@@ -39,5 +39,13 @@ public class UserSeedDto {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public SoldProductsPerUserRootDto getSoldProducts() {
+        return soldProducts;
+    }
+
+    public void setSoldProducts(SoldProductsPerUserRootDto soldProducts) {
+        this.soldProducts = soldProducts;
     }
 }

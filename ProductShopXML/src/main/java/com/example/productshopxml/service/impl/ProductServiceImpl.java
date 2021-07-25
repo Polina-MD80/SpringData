@@ -1,9 +1,8 @@
 package com.example.productshopxml.service.impl;
 
-import com.example.productshopxml.model.dto.ProductInRangeDto;
-import com.example.productshopxml.model.dto.ProductInRangeRootDto;
-import com.example.productshopxml.model.dto.ProductRootSeedDto;
-import com.example.productshopxml.model.dto.ProductSeedDto;
+import com.example.productshopxml.model.dto.productsInRangeDtos.ProductInRangeDto;
+import com.example.productshopxml.model.dto.productsInRangeDtos.ProductInRangeRootDto;
+import com.example.productshopxml.model.dto.seedDtos.ProductSeedDto;
 import com.example.productshopxml.model.entity.Product;
 import com.example.productshopxml.repository.ProductRepository;
 import com.example.productshopxml.service.CategoryService;

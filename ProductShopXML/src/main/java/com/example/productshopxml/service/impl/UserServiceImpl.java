@@ -1,6 +1,14 @@
 package com.example.productshopxml.service.impl;
 
-import com.example.productshopxml.model.dto.*;
+import com.example.productshopxml.model.dto.seedDtos.UserSeedDto;
+import com.example.productshopxml.model.dto.usersAndProducts.ProductNameAndPriceDto;
+import com.example.productshopxml.model.dto.usersAndProducts.SoldProductsPerUserRootDto;
+import com.example.productshopxml.model.dto.usersAndProducts.UserProductRootDto;
+import com.example.productshopxml.model.dto.usersAndProducts.UserProductsDto;
+import com.example.productshopxml.model.dto.usersSoldProducts.ProductInfoAndBuyerDto;
+import com.example.productshopxml.model.dto.usersSoldProducts.SoldProductsRootDto;
+import com.example.productshopxml.model.dto.usersSoldProducts.UserNamesSoldProductsDto;
+import com.example.productshopxml.model.dto.usersSoldProducts.UserSoldProductsRootDto;
 import com.example.productshopxml.model.entity.User;
 import com.example.productshopxml.repository.UserRepository;
 import com.example.productshopxml.service.UserService;
@@ -11,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 public class UserServiceImpl implements UserService {
@@ -26,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void seedUsers(List<UserSeedDto> userSeedDtos) {
-        if (userRepository.count()>0){
+        if (userRepository.count() > 0) {
             return;
         }
         userSeedDtos.stream()
@@ -52,7 +61,7 @@ public class UserServiceImpl implements UserService {
                 .map(user -> {
                     UserNamesSoldProductsDto userNamesSoldProductsDto = modelMapper.map(user, UserNamesSoldProductsDto.class);
                     List<ProductInfoAndBuyerDto> productInfoAndBuyerDtos = user.getSoldProducts().stream()
-                            .filter(product -> product.getBuyer()!=null)
+                            .filter(product -> product.getBuyer() != null)
                             .map(product -> {
                                 ProductInfoAndBuyerDto productInfoAndBuyerDto = modelMapper.map(product, ProductInfoAndBuyerDto.class);
                                 productInfoAndBuyerDto.setBuyerFirstName(product.getBuyer().getFirstName());
@@ -69,6 +78,29 @@ public class UserServiceImpl implements UserService {
         UserSoldProductsRootDto userSoldProductsRootDto = new UserSoldProductsRootDto();
         userSoldProductsRootDto.setUsers(userNamesSoldProductsDtos);
         return userSoldProductsRootDto;
+    }
+
+    @Override
+    public UserProductRootDto getUserProducts() {
+        List<User> users = userRepository.findAllUsersWithSoldProductsOrderedByNumberOfProductsDescAndLastName();
+        UserProductRootDto userProductRootDto = new UserProductRootDto();
+        userProductRootDto.setCount(users.size());
+
+        List<UserProductsDto> userProductsDtos = users.stream().map(user -> {
+                    UserProductsDto userProductsDto = modelMapper.map(user, UserProductsDto.class);
+                    userProductsDto.setSoldProducts(new SoldProductsPerUserRootDto());
+                    List<ProductNameAndPriceDto> productNameAndPriceDtos = user.getSoldProducts().stream()
+                            .map(product -> modelMapper.map(product, ProductNameAndPriceDto.class)).collect(Collectors.toList());
+                    userProductsDto.getSoldProducts().setSoldProducts(productNameAndPriceDtos);
+                    userProductsDto.getSoldProducts().setCount(productNameAndPriceDtos.size());
+
+                    return userProductsDto;
+                }
+        ).collect(Collectors.toList());
+
+        userProductRootDto.setUsers(userProductsDtos);
+
+        return userProductRootDto;
     }
 
 }

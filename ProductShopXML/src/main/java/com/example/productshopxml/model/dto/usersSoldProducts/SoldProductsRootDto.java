@@ -1,4 +1,6 @@
-package com.example.productshopxml.model.dto;
+package com.example.productshopxml.model.dto.usersSoldProducts;
+
+import com.example.productshopxml.model.dto.usersSoldProducts.ProductInfoAndBuyerDto;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
