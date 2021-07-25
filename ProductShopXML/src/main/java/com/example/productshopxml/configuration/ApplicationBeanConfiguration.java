@@ -11,8 +11,10 @@ import javax.persistence.Basic;
 @Configuration
 public class ApplicationBeanConfiguration {
     @Bean
-    public ModelMapper modelMapper(){
+    public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
+
 
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-   @Query("select u from User u join Product p " +
+   @Query("select u from User u inner JOIN Product p " +
            "on p.seller.id = u.id " +
            "where p.buyer is not null " +
            "order by u.lastName, u.firstName")

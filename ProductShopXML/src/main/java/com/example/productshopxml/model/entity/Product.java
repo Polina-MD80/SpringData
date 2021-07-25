@@ -33,7 +33,7 @@ public class Product extends BaseEntity {
     }
 
 
-   @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     public User getBuyer() {
         return buyer;
     }
@@ -44,7 +44,7 @@ public class Product extends BaseEntity {
         return seller;
     }
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Category> getCategories() {
         return categories;
     }

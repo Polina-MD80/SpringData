@@ -1,6 +1,7 @@
 package com.example.productsshop.service.impl;
 
 import com.example.productsshop.model.dto.*;
+import com.example.productsshop.model.entity.Product;
 import com.example.productsshop.model.entity.User;
 import com.example.productsshop.repository.UserRepository;
 import com.example.productsshop.service.UserService;
@@ -61,7 +62,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserSellerDto> findAllSellersAndTheirSoldProducts() {
-        List<User> users = userRepository.findAllBySoldProductsMoreThanZero();
+        List<User> users = userRepository.findAllBySoldProductsMoreThanZero()
+                .stream()
+                .peek(user -> {
+                    List<Product> products = user.getSoldProducts().stream().filter(product -> product.getBuyer() != null).collect(Collectors.toList());
+                    user.setSoldProducts(products);
+                }).collect(Collectors.toList());
+
         return users.stream()
                 .map(user -> modelMapper.map(user, UserSellerDto.class))
                 .collect(Collectors.toList());

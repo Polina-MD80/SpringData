@@ -1,5 +1,6 @@
-package com.example.productshopxml.util;
+package com.example.productshopxml.util.impl;
 
+import com.example.productshopxml.util.ValidationUtil;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Validation;

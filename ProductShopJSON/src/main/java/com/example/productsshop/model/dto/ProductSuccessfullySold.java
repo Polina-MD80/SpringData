@@ -2,6 +2,7 @@ package com.example.productsshop.model.dto;
 
 import com.google.gson.annotations.Expose;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class ProductSuccessfullySold {
@@ -33,15 +34,17 @@ public class ProductSuccessfullySold {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
+    @NotNull
     public String getBuyerFirstName() {
         return buyerFirstName;
     }
+
 
     public void setBuyerFirstName(String buyerFirstName) {
         this.buyerFirstName = buyerFirstName;
     }
 
+    @NotNull
     public String getBuyerLastName() {
         return buyerLastName;
     }
