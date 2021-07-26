@@ -18,11 +18,13 @@ public class UserRegisterDto {
 
     public UserRegisterDto() {
     }
-@Email(message = "Enter valid email.")
+
+    @Email(message = "Enter valid email.")
     public String getEmail() {
         return email;
     }
-@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$", message = "Enter valid password.")
+
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$", message = "Enter valid password.")
     public String getPassword() {
         return password;
     }

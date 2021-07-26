@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
    @Query("select u from User u inner JOIN Product p " +
            "on p.seller.id = u.id " +
-           "where p.buyer is not null " +
+           "where p.buyer.id is not null " +
            "order by u.lastName, u.firstName")
    List<User> findAllBySoldProductsMoreThanZero();
 
