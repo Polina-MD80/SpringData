@@ -6,7 +6,13 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Opel Omega"
+        "car": "Nissan 370Z"
+      },
+      {
+        "car": "Chevy Camaro"
+      },
+      {
+        "car": "Skoda Citigo"
       }
     ]
   },
@@ -17,13 +23,10 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Seat Toledo"
+        "car": "Rolls-Royce Phantom Drophead Coupé"
       },
       {
-        "car": "Seat Mii"
-      },
-      {
-        "car": "Mercedes A 160 CDI"
+        "car": "Mercedes W212"
       }
     ]
   },
@@ -34,16 +37,13 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Citroen C3"
+        "car": "Citroen C1"
       },
       {
-        "car": "Toyota Corolla"
+        "car": "Alfa Romeo Giulietta"
       },
       {
-        "car": "Toyota Prius"
-      },
-      {
-        "car": "Seat Toledo"
+        "car": "Citroen C5"
       }
     ]
   },
@@ -54,19 +54,13 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Peugeot 407"
+        "car": "Renault Espace"
       },
       {
-        "car": "Renault Alaskan"
+        "car": "Alfa Romeo Giulia"
       },
       {
-        "car": "Seat Toledo"
-      },
-      {
-        "car": "Toyota Prius"
-      },
-      {
-        "car": "Great Wall H2"
+        "car": "Citroen C5"
       }
     ]
   },
@@ -77,10 +71,10 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Renault Alaskan"
+        "car": "Ford Torino"
       },
       {
-        "car": "Ferrari 250 GTO"
+        "car": "Nissan 370Z"
       }
     ]
   },
@@ -91,16 +85,16 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Chevy Camaro"
+        "car": "Fiat Panda 4x4 Antarctica"
       },
       {
-        "car": "Opel Insignia"
+        "car": "Peugeot 306"
       },
       {
-        "car": "Nissan Altima"
+        "car": "Citroen C8"
       },
       {
-        "car": "Alfa Romeo 75"
+        "car": "Skoda Citigo"
       }
     ]
   },
@@ -111,10 +105,19 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Fiat 500L"
+        "car": "BMW X6 M"
       },
       {
-        "car": "Nissan Altima"
+        "car": "Fiat Panda 4x4 Antarctica"
+      },
+      {
+        "car": "Skoda Citigo"
+      },
+      {
+        "car": "Alfa Romeo 75"
+      },
+      {
+        "car": "Chevy Caprice"
       }
     ]
   },
@@ -125,10 +128,13 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Citroen C1"
+        "car": "Nissan GT-R"
       },
       {
-        "car": "Ferrari F430"
+        "car": "Toyota Camry Hybrid"
+      },
+      {
+        "car": "Great Wall Steed 3"
       }
     ]
   },
@@ -139,16 +145,13 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Toyota Tacoma"
+        "car": "Opel Corsa"
       },
       {
-        "car": "Ford Fiesta"
+        "car": "Toyota Prius"
       },
       {
-        "car": "Renault Duster"
-      },
-      {
-        "car": "Lamborghini Murciélago"
+        "car": "Seat Ibiza"
       }
     ]
   },
@@ -159,7 +162,13 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Ferrari 250 GTO"
+        "car": "Ferrari Daytona"
+      },
+      {
+        "car": "Seat Ibiza"
+      },
+      {
+        "car": "Fiat Panda"
       }
     ]
   },
@@ -170,13 +179,22 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Opel Omega"
+        "car": "BMW X6 M"
       },
       {
-        "car": "Chevy Camaro"
+        "car": "Fiat 500L"
       },
       {
-        "car": "Opel Kadet"
+        "car": "Toyota Tacoma"
+      },
+      {
+        "car": "Ferrari Daytona"
+      },
+      {
+        "car": "Renault Duster"
+      },
+      {
+        "car": "Alfa Romeo Giulietta"
       }
     ]
   },
@@ -187,7 +205,10 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Dacia Logan"
+        "car": "Lamborghini Diablo"
+      },
+      {
+        "car": "Toyota Corolla"
       }
     ]
   },
@@ -198,7 +219,13 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Toyota Tacoma"
+        "car": "Nissan GT-R"
+      },
+      {
+        "car": "Skoda Citigo"
+      },
+      {
+        "car": "Nissan 370Z"
       }
     ]
   },
@@ -209,25 +236,16 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Nissan GT-R"
+        "car": "Mercedes W202"
       },
       {
-        "car": "Mercedes A 160 CDI"
+        "car": "Fiat Freemont"
       },
       {
-        "car": "Opel Astra"
+        "car": "Renault Alaskan"
       },
       {
-        "car": "Nissan Altima"
-      },
-      {
-        "car": "Mercedes W211"
-      },
-      {
-        "car": "Rolls-Royce Phantom"
-      },
-      {
-        "car": "Toyota Corolla"
+        "car": "Great Wall Steed 3"
       }
     ]
   },
@@ -238,7 +256,10 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Skoda Fabia"
+        "car": "Ford Torino"
+      },
+      {
+        "car": "Nissan Altima"
       }
     ]
   },
@@ -249,7 +270,13 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Toyota Tacoma"
+        "car": "Toyota Prius"
+      },
+      {
+        "car": "Skoda Rapid Spaceback"
+      },
+      {
+        "car": "Toyota Prius"
       }
     ]
   },
@@ -260,16 +287,7 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Citroen C1"
-      },
-      {
-        "car": "Ford Fiesta"
-      },
-      {
-        "car": "Opel Omega"
-      },
-      {
-        "car": "Renault Clio IV"
+        "car": "Nissan GT-R"
       }
     ]
   },
@@ -280,13 +298,22 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Great Wall Haval H6"
+        "car": "Fiat 500 (2007) Abarth 695 Tributo Maserati"
       },
       {
-        "car": "Ford Torino"
+        "car": "Nissan Altima"
       },
       {
-        "car": "Ferrari 275"
+        "car": "Fiat Panda"
+      },
+      {
+        "car": "Opel Omega"
+      },
+      {
+        "car": "Fiat Panda 4x4"
+      },
+      {
+        "car": "Toyota Tacoma"
       }
     ]
   },
@@ -297,13 +324,25 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Citroen C8"
+        "car": "Chevy Malibu"
       },
       {
-        "car": "Skoda Rapid Spaceback"
+        "car": "Ferrari Daytona"
       },
       {
-        "car": "Chevy Corvette"
+        "car": "Great Wall Wingle 5"
+      },
+      {
+        "car": "Renault Alaskan"
+      },
+      {
+        "car": "Seat Toledo"
+      },
+      {
+        "car": "Alfa Romeo Giulietta"
+      },
+      {
+        "car": "Ferrari Daytona"
       }
     ]
   },
@@ -314,7 +353,10 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Nissan GT-R"
+        "car": "Dacia Dokker"
+      },
+      {
+        "car": "Opel Omega"
       },
       {
         "car": "Citroen C4"
@@ -328,34 +370,19 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Mercedes W210"
+        "car": "Ferrari 250 GTO"
       },
       {
-        "car": "Nissan Versa"
+        "car": "Seat Mii"
       },
       {
-        "car": "Chevy Cruze"
-      },
-      {
-        "car": "Fiat Panda"
-      },
-      {
-        "car": "Peugeot 308"
-      },
-      {
-        "car": "Alfa Romeo 75"
-      },
-      {
-        "car": "Toyota Prius"
-      },
-      {
-        "car": "Renault Alaskan"
+        "car": "Nissan GT-R"
       },
       {
         "car": "Ford Fiesta"
       },
       {
-        "car": "Ford Fiesta"
+        "car": "Peugeot 405"
       }
     ]
   },
@@ -366,10 +393,7 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Alfa Romeo AR51"
-      },
-      {
-        "car": "Opel Insignia"
+        "car": "Skoda Rapid"
       }
     ]
   },
@@ -380,16 +404,13 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Renault Duster"
+        "car": "Ford Fiesta"
       },
       {
-        "car": "BMW F20"
+        "car": "Chevy Impala"
       },
       {
-        "car": "Citroen C3"
-      },
-      {
-        "car": "Skoda Citigo"
+        "car": "Opel Corsa"
       }
     ]
   },
@@ -400,10 +421,7 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Ferrari F40"
-      },
-      {
-        "car": "Opel Kadet"
+        "car": "Fiat 500 (2007) Abarth 695 Tributo Maserati"
       }
     ]
   },
@@ -414,22 +432,10 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Renault Alaskan"
+        "car": "Fiat Panda"
       },
       {
-        "car": "Citroen C1"
-      },
-      {
-        "car": "Fiat Panda 4x4 Antarctica"
-      },
-      {
-        "car": "Ford Pinto"
-      },
-      {
-        "car": "Citroen C5"
-      },
-      {
-        "car": "Toyota Prius"
+        "car": "Toyota Corolla"
       }
     ]
   },
@@ -440,13 +446,7 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Nissan 370Z"
-      },
-      {
-        "car": "Nissan Altima"
-      },
-      {
-        "car": "Toyota Corolla"
+        "car": "Citroen C1"
       }
     ]
   },
@@ -457,10 +457,13 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Opel Vectra"
+        "car": "Renault Espace"
       },
       {
-        "car": "Toyota Yaris"
+        "car": "Skoda Citigo"
+      },
+      {
+        "car": "Skoda Citigo"
       }
     ]
   },
@@ -469,14 +472,7 @@
     "Name": "Taina Achenbach",
     "BirthDate": "1994-10-01T00:00:00",
     "IsYoungDriver": false,
-    "Sales": [
-      {
-        "car": "Great Wall H2"
-      },
-      {
-        "car": "Citroen C5"
-      }
-    ]
+    "Sales": []
   },
   {
     "Id": 9,
@@ -485,7 +481,16 @@
     "IsYoungDriver": true,
     "Sales": [
       {
-        "car": "Seat Toledo"
+        "car": "Dacia Sandero"
+      },
+      {
+        "car": "Chevy Camaro"
+      },
+      {
+        "car": "Opel Insignia"
+      },
+      {
+        "car": "Seat Ibiza"
       }
     ]
   },
@@ -496,13 +501,7 @@
     "IsYoungDriver": false,
     "Sales": [
       {
-        "car": "Peugeot 405"
-      },
-      {
-        "car": "Nissan GT-R"
-      },
-      {
-        "car": "Toyota Prius"
+        "car": "Alfa Romeo 75"
       }
     ]
   }

@@ -1,152 +1,147 @@
 [
   {
-    "fullName": "Rico Peer",
-    "boughtCars": 7,
-    "Price": 10743.54
-  },
-  {
-    "fullName": "Daniele Zarate",
-    "boughtCars": 3,
-    "Price": 9107.13
-  },
-  {
-    "fullName": "Rema Revelle",
-    "boughtCars": 4,
-    "Price": 9042.27
-  },
-  {
-    "fullName": "Marcelle Griego",
-    "boughtCars": 10,
-    "Price": 7855.29
-  },
-  {
-    "fullName": "Emmitt Benally",
-    "boughtCars": 6,
-    "Price": 6105.27
-  },
-  {
     "fullName": "Carole Witman",
+    "boughtCars": 6,
+    "Price": 10584.51
+  },
+  {
+    "fullName": "Kristian Engberg",
     "boughtCars": 3,
-    "Price": 5684.74
+    "Price": 9042.89
+  },
+  {
+    "fullName": "Hipolito Lamoreaux",
+    "boughtCars": 6,
+    "Price": 6965.04
   },
   {
     "fullName": "Oren Perlman",
-    "boughtCars": 3,
-    "Price": 5307.78
+    "boughtCars": 7,
+    "Price": 5983.39
   },
   {
-    "fullName": "Carri Knapik",
+    "fullName": "Marcelle Griego",
     "boughtCars": 5,
-    "Price": 5241.30
+    "Price": 5616.82
   },
   {
-    "fullName": "Ann Mcenaney",
-    "boughtCars": 4,
-    "Price": 4934.47
-  },
-  {
-    "fullName": "Donnetta Soliz",
+    "fullName": "Lino Subia",
     "boughtCars": 3,
-    "Price": 4171.36
-  },
-  {
-    "fullName": "Nisha Markwell",
-    "boughtCars": 3,
-    "Price": 4123.02
-  },
-  {
-    "fullName": "Johnette Derryberry",
-    "boughtCars": 1,
-    "Price": 3793.96
-  },
-  {
-    "fullName": "Natalie Poli",
-    "boughtCars": 2,
-    "Price": 3653.05
-  },
-  {
-    "fullName": "Hai Everton",
-    "boughtCars": 1,
-    "Price": 3342.83
-  },
-  {
-    "fullName": "Jimmy Grossi",
-    "boughtCars": 4,
-    "Price": 2715.54
+    "Price": 5231.00
   },
   {
     "fullName": "Brett Brickley",
+    "boughtCars": 3,
+    "Price": 4999.85
+  },
+  {
+    "fullName": "Audrea Cardinal",
+    "boughtCars": 5,
+    "Price": 4411.66
+  },
+  {
+    "fullName": "Louann Holzworth",
+    "boughtCars": 3,
+    "Price": 4346.10
+  },
+  {
+    "fullName": "Daniele Zarate",
+    "boughtCars": 1,
+    "Price": 4226.88
+  },
+  {
+    "fullName": "Johnette Derryberry",
     "boughtCars": 4,
-    "Price": 2634.25
+    "Price": 4103.05
   },
   {
     "fullName": "Teddy Hobby",
     "boughtCars": 4,
-    "Price": 2623.01
+    "Price": 3489.86
   },
   {
-    "fullName": "Kristian Engberg",
-    "boughtCars": 1,
-    "Price": 2328.95
-  },
-  {
-    "fullName": "Taina Achenbach",
-    "boughtCars": 2,
-    "Price": 2254.73
-  },
-  {
-    "fullName": "Faustina Burgher",
-    "boughtCars": 2,
-    "Price": 2060.90
-  },
-  {
-    "fullName": "Yvonne Mccalla",
-    "boughtCars": 2,
-    "Price": 1783.22
-  },
-  {
-    "fullName": "Hipolito Lamoreaux",
+    "fullName": "Ann Mcenaney",
     "boughtCars": 3,
-    "Price": 1751.74
-  },
-  {
-    "fullName": "Louann Holzworth",
-    "boughtCars": 1,
-    "Price": 1682.31
+    "Price": 3288.25
   },
   {
     "fullName": "Sylvie Mcelravy",
-    "boughtCars": 1,
-    "Price": 1367.95
+    "boughtCars": 3,
+    "Price": 3032.65
   },
   {
-    "fullName": "Francis Mckim",
-    "boughtCars": 2,
-    "Price": 1060.22
+    "fullName": "Jimmy Grossi",
+    "boughtCars": 1,
+    "Price": 2637.95
+  },
+  {
+    "fullName": "Faustina Burgher",
+    "boughtCars": 3,
+    "Price": 2486.82
+  },
+  {
+    "fullName": "Rico Peer",
+    "boughtCars": 4,
+    "Price": 2449.37
   },
   {
     "fullName": "Garret Capron",
     "boughtCars": 2,
-    "Price": 905.53
+    "Price": 2447.21
   },
   {
-    "fullName": "Cinthia Lasala",
-    "boughtCars": 2,
-    "Price": 802.92
+    "fullName": "Natalie Poli",
+    "boughtCars": 3,
+    "Price": 1666.42
   },
   {
-    "fullName": "Audrea Cardinal",
-    "boughtCars": 2,
-    "Price": 764.25
-  },
-  {
-    "fullName": "Lino Subia",
-    "boughtCars": 1,
-    "Price": 251.27
+    "fullName": "Francis Mckim",
+    "boughtCars": 3,
+    "Price": 1547.29
   },
   {
     "fullName": "Zada Attwood",
+    "boughtCars": 2,
+    "Price": 1248.82
+  },
+  {
+    "fullName": "Carri Knapik",
+    "boughtCars": 3,
+    "Price": 1123.94
+  },
+  {
+    "fullName": "Yvonne Mccalla",
     "boughtCars": 1,
-    "Price": 238.40
+    "Price": 1102.97
+  },
+  {
+    "fullName": "Hai Everton",
+    "boughtCars": 2,
+    "Price": 874.14
+  },
+  {
+    "fullName": "Rema Revelle",
+    "boughtCars": 3,
+    "Price": 840.37
+  },
+  {
+    "fullName": "Emmitt Benally",
+    "boughtCars": 2,
+    "Price": 630.93
+  },
+  {
+    "fullName": "Donnetta Soliz",
+    "boughtCars": 2,
+    "Price": 604.49
+  },
+  {
+    "fullName": "Cinthia Lasala",
+    "boughtCars": 1,
+    "Price": 378.88
+  },
+  {
+    "fullName": "Nisha Markwell",
+    "boughtCars": 1,
+    "Price": 204.98
   }
 ]
