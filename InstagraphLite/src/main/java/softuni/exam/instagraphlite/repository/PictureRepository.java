@@ -13,4 +13,6 @@ public interface PictureRepository extends JpaRepository<Picture, Long> {
     Picture findByPath(String path);
 
     List<Picture> findAllBySizeIsGreaterThanOrderBySizeAsc(Double value);
+
+    boolean existsByPath(String path);
 }

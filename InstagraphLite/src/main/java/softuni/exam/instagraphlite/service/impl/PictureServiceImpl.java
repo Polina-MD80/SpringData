@@ -45,7 +45,8 @@ public class PictureServiceImpl implements PictureService {
         PictureSeedDto[] pictureSeedDtos = gson.fromJson(readFromFileContent(), PictureSeedDto[].class);
         Arrays.stream(pictureSeedDtos)
                 .filter(pictureSeedDto -> {
-                    boolean isValid = validatorUtil.isValid(pictureSeedDto);
+                    boolean isValid = validatorUtil.isValid(pictureSeedDto)
+                            && !isEntityInTheBase(pictureSeedDto.getPath());
                     stringBuilder.append(isValid ?
                             String.format("Successfully imported Picture, with size %f", pictureSeedDto.getSize())
                             : "Invalid picture")
@@ -54,14 +55,12 @@ public class PictureServiceImpl implements PictureService {
                     return isValid;
                 })
                 .map(pictureSeedDto -> modelMapper.map(pictureSeedDto, Picture.class))
-                .forEach(picture -> {
-                    try {
-                        pictureRepository.save(picture);
-                    }catch (Throwable e){
-                        stringBuilder.append("Invalid picture").append(System.lineSeparator());
-                    }
-                });
+                .forEach(pictureRepository::save);
         return stringBuilder.toString();
+    }
+
+    private boolean isEntityInTheBase(String path) {
+        return pictureRepository.existsByPath(path);
     }
 
     @Override

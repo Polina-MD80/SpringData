@@ -52,7 +52,8 @@ public class UserServiceImpl implements UserService {
         Arrays.stream(userSeedDtos)
                 .filter(userSeedDto -> {
                     boolean isValid = validatorUtil.isValid(userSeedDto)
-                            &&pictureService.getPictureByPath(userSeedDto.getProfilePicture())!=null;
+                            &&pictureService.getPictureByPath(userSeedDto.getProfilePicture())!=null
+                            &&!userIsInTheBase(userSeedDto.getUsername());
 
                     sb.append(isValid ?
                             String.format("Successfully imported User: %s", userSeedDto.getUsername())
@@ -65,16 +66,13 @@ public class UserServiceImpl implements UserService {
                     user.setProfilePicture(pictureService.getPictureByPath(userSeedDto.getProfilePicture()));
                     return user;
                 })
-                .forEach(user -> {
-                    try {
-                        userRepository.save(user);
-                    } catch (Throwable e) {
-                        sb.append("Invalid user!!!")
-                                .append(System.lineSeparator());
-                    }
-                });
+                .forEach(userRepository::save);
 
         return sb.toString();
+    }
+
+    private boolean userIsInTheBase(String username) {
+        return userRepository.existsByUsername(username);
     }
 
     @Override

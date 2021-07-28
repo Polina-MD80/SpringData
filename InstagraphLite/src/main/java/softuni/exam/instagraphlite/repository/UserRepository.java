@@ -14,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u " +
             "order by size(u.posts)desc , u.id ")
     List<User> findAllUsersOrderedByPostsCountDecsThenById();
+
+    boolean existsByUsername(String username);
 }
