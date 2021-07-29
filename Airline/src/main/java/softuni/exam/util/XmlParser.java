@@ -1,0 +1,11 @@
+package softuni.exam.util;
+
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
+
+public interface XmlParser {
+    public <T> T fromFile(String filePath, Class<T> tClass) throws JAXBException, FileNotFoundException;
+
+
+    public <T> void toFile(String filePath, T entity);
+}
